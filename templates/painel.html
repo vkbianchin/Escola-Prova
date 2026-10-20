@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cadê o Equipamento? — Painel</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <header class="topo">
+    <h1>Cadê o Equipamento?</h1>
+    <div class="usuario">
+      <span id="nome-usuario"></span>
+      <span id="papel-usuario" class="selo"></span>
+      <button id="btn-sair" class="botao">Sair</button>
+    </div>
+  </header>
+
+  <main class="conteudo">
+    <div id="aviso" class="mensagem" role="status" aria-live="polite" hidden></div>
+
+    <!-- Só o administrador vê esta seção -->
+    <section id="sec-cadastro" class="cartao" hidden>
+      <h2>Cadastrar equipamento</h2>
+      <form id="form-equipamento" class="grade-form" novalidate>
+        <div>
+          <label for="eq-nome">Nome</label>
+          <input id="eq-nome" type="text" maxlength="120" required>
+        </div>
+        <div>
+          <label for="eq-patrimonio">Código de patrimônio</label>
+          <input id="eq-patrimonio" type="text" maxlength="40" required>
+        </div>
+        <div class="largura-total">
+          <label for="eq-descricao">Descrição (opcional)</label>
+          <input id="eq-descricao" type="text">
+        </div>
+        <div class="largura-total">
+          <button type="submit" class="botao primario">Cadastrar</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="cartao">
+      <h2>Equipamentos</h2>
+      <div class="tabela-rolavel">
+        <table>
+          <thead>
+            <tr>
+              <th>Nome</th><th>Patrimônio</th><th>Descrição</th><th>Status</th>
+              <th id="th-acao-equip" hidden>Ação</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-equipamentos"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="cartao">
+      <div class="cabecalho-secao">
+        <h2 id="titulo-emprestimos">Empréstimos</h2>
+        <div id="filtro-status" hidden>
+          <label for="select-status">Filtrar:</label>
+          <select id="select-status">
+            <option value="">Todos</option>
+            <option value="solicitado">Solicitados</option>
+            <option value="aprovado">Aprovados</option>
+            <option value="recusado">Recusados</option>
+            <option value="devolvido">Devolvidos</option>
+          </select>
+        </div>
+      </div>
+      <div class="tabela-rolavel">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th><th>Equipamento</th><th id="th-solicitante">Solicitante</th>
+              <th>Solicitado em</th><th>Status</th>
+              <th id="th-acao-emp" hidden>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-emprestimos"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='js/api.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/painel.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+:root {
+  --fundo: #f3f5f9;
+  --cartao: #ffffff;
+  --texto: #1c2430;
+  --texto-suave: #5b6675;
+  --borda: #dde3ec;
+  --primaria: #004a8d;
+  --primaria-escura: #003668;
+  --perigo: #b3261e;
+  --ok-fundo: #e5f5ea;
+  --ok-texto: #14612f;
+  --erro-fundo: #fdeceb;
+  --erro-texto: #8c1d18;
+  --raio: 10px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--fundo);
+  color: var(--texto);
+  line-height: 1.45;
+}
+
+[hidden] { display: none !important; }
+
+h1, h2 { margin: 0; }
+h2 { font-size: 1.15rem; margin-bottom: 0.9rem; }
+
+/* ---------- topo ---------- */
+.topo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 1.5rem;
+  background: var(--primaria);
+  color: #fff;
+}
+.topo h1 { font-size: 1.25rem; }
+.usuario { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
+
+.conteudo {
+  max-width: 1000px;
+  margin: 1.5rem auto;
+  padding: 0 1rem;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.cartao {
+  background: var(--cartao);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  padding: 1.25rem;
+}
+
+.cabecalho-secao {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.9rem;
+}
+.cabecalho-secao h2 { margin: 0; }
+
+/* ---------- formulários ---------- */
+label { display: block; font-weight: 600; font-size: 0.9rem; margin: 0 0 0.3rem; }
+
+input, select {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  font: inherit;
+  background: #fff;
+}
+select { width: auto; }
+input:focus, select:focus, .botao:focus-visible {
+  outline: 3px solid rgba(0, 74, 141, 0.3);
+  outline-offset: 1px;
+}
+
+.grade-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem;
+}
+.largura-total { grid-column: 1 / -1; }
+@media (max-width: 600px) { .grade-form { grid-template-columns: 1fr; } }
+
+/* ---------- botões ---------- */
+.botao {
+  padding: 0.55rem 1rem;
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--texto);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+.botao:hover:not(:disabled) { filter: brightness(0.96); }
+.botao:disabled { opacity: 0.6; cursor: not-allowed; }
+.botao.primario { background: var(--primaria); border-color: var(--primaria); color: #fff; }
+.botao.primario:hover:not(:disabled) { background: var(--primaria-escura); filter: none; }
+.botao.perigo { background: #fff; border-color: var(--perigo); color: var(--perigo); }
+.botao.pequeno { padding: 0.3rem 0.7rem; font-size: 0.85rem; }
+.topo .botao { background: transparent; border-color: rgba(255, 255, 255, 0.6); color: #fff; }
+
+/* ---------- mensagens ---------- */
+.mensagem { padding: 0.7rem 1rem; border-radius: 8px; font-size: 0.95rem; }
+.mensagem.ok { background: var(--ok-fundo); color: var(--ok-texto); }
+.mensagem.erro { background: var(--erro-fundo); color: var(--erro-texto); }
+
+/* ---------- tabelas ---------- */
+.tabela-rolavel { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+th, td { text-align: left; padding: 0.65rem 0.6rem; border-bottom: 1px solid var(--borda); vertical-align: middle; }
+th { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.03em; color: var(--texto-suave); }
+td small { color: var(--texto-suave); }
+td.vazio { text-align: center; color: var(--texto-suave); padding: 1.5rem; }
+td.acoes { white-space: nowrap; }
+td.acoes .botao + .botao { margin-left: 0.3rem; }
+
+/* ---------- selos ---------- */
+.selo {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: #e8ecf2;
+  color: var(--texto);
+}
+.topo .selo { background: rgba(255, 255, 255, 0.2); color: #fff; }
+.status-disponivel, .status-aprovado { background: var(--ok-fundo); color: var(--ok-texto); }
+.status-emprestado, .status-solicitado { background: #fff3d6; color: #7a5200; }
+.status-manutencao, .status-recusado { background: var(--erro-fundo); color: var(--erro-texto); }
+.status-devolvido { background: #e3eefb; color: #174a85; }
+
+/* ---------- login ---------- */
+.pagina-login {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+}
+.cartao-login {
+  width: 100%;
+  max-width: 400px;
+  background: var(--cartao);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  padding: 2rem;
+}
+.cartao-login h1 { font-size: 1.5rem; color: var(--primaria); }
+.subtitulo { margin: 0.2rem 0 1.5rem; color: var(--texto-suave); }
+.cartao-login form { display: grid; gap: 0.9rem; }
+.cartao-login .botao { width: 100%; }
+.contas-teste { margin-top: 1.25rem; font-size: 0.85rem; color: var(--texto-suave); }
+.contas-teste ul { padding-left: 1.1rem; margin: 0.5rem 0 0; }

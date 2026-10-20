@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cadê o Equipamento? — Login</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="pagina-login">
+  <main class="cartao-login">
+    <h1>Cadê o Equipamento?</h1>
+    <p class="subtitulo">Almoxarifado SENAC Videira</p>
+
+    <form id="form-login" novalidate>
+      <label for="email">E-mail</label>
+      <input id="email" type="email" autocomplete="username" required>
+
+      <label for="senha">Senha</label>
+      <input id="senha" type="password" autocomplete="current-password" required>
+
+      <p id="erro-login" class="mensagem erro" role="alert" hidden></p>
+
+      <button type="submit" class="botao primario" id="btn-entrar">Entrar</button>
+    </form>
+
+    <details class="contas-teste">
+      <summary>Contas de teste</summary>
+      <ul>
+        <li><strong>Admin:</strong> admin@senac.com / Admin@123</li>
+        <li><strong>Gestor:</strong> gestor@senac.com / Gestor@123</li>
+        <li><strong>Comum:</strong> comum@senac.com / Comum@123</li>
+      </ul>
+    </details>
+  </main>
+
+  <script src="{{ url_for('static', filename='js/api.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/login.js') }}"></script>
+</body>
+</html>
